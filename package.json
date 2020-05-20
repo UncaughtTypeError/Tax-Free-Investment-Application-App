@@ -1,8 +1,9 @@
 {
-  "home": ".",
+  "home": "https://uncaughttypeerror.github.io/Tax-Free-Investment-Application-App/",
   "name": "tax-free-investment-application-app",
   "version": "0.1.0",
   "private": true,
+  "url": "https://github.com/UncaughtTypeError/Tax-Free-Investment-Application-App",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
