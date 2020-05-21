@@ -5,6 +5,8 @@
   "private": true,
   "url": "https://github.com/UncaughtTypeError/Tax-Free-Investment-Application-App",
   "dependencies": {
+    "@material-ui/core": "^4.9.14",
+    "@material-ui/icons": "^4.9.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
