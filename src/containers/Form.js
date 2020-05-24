@@ -44,16 +44,13 @@ const Form = () => {
     const { register, handleSubmit, setValue, errors } = useForm();
 
     const   [fieldVisibility, setFieldVisibility] = useState('no'),
-            [selectedDate, setSelectedDate] = useState({
-                'DebitOrderStartMonth': new Date(Date.now()).toLocaleString(),
-                'LumpSumInvestmentMonth': new Date(Date.now()).toLocaleString(),
-            }),
+            [selectedDate, setSelectedDate] = useState({}),
             [isError, setError] = useState(false);
 
     const handleFieldVisibility = (event) => {
         setFieldVisibility(event.target.value);
     };
-console.log(new Date(Date.now()).toLocaleString());
+
     const handleDebitMonthUpdate = (value) => {
         let monthValue = value ? value.month() : null;
         setValue('DebitOrderStartMonth', monthValue);
