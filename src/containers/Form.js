@@ -1,6 +1,8 @@
 import React, { Fragment, useState } from 'react';
+// Components
+import Results from '../presentational/Results';
 // Utils
-import { convertDateToNumber } from '../utils/utilities';
+import applicationCheck from '../utils/utilities';
 // 3rd Party
 import { useForm } from "react-hook-form"; // form validation & submission
 // Theme
@@ -44,31 +46,32 @@ const Form = () => {
     const { register, handleSubmit, setValue } = useForm();
 
     const   [fieldVisibility, setFieldVisibility] = useState('no'),
-            [selectedDate, setSelectedDate] = useState({});
+            [selectedDate, setSelectedDate] = useState({}),
+            [applicationResults, setApplicationResults] = useState();
 
     const handleFieldVisibility = (event) => {
         setFieldVisibility(event.target.value);
     };
 
     const handleDebitMonthUpdate = (value) => {
-        let monthValue = value ? value.month() : null;
+        let monthValue = value ? value.month()+1 : null;
         setValue('DebitOrderStartMonth', monthValue);
         setSelectedDate({ ...selectedDate, 'DebitOrderStartMonth': value });
     }
 
     const handleLumpSumMonthUpdate = (value) => {
-        let monthValue = value ? value.month() : null;
+        let monthValue = value ? value.month()+1 : null;
         setValue('LumpSumInvestmentMonth', monthValue);
         setSelectedDate({ ...selectedDate, 'LumpSumInvestmentMonth': value });
     }
 
     const onSubmit = (formData) => {
-        console.log(formData);
+        setApplicationResults(applicationCheck(formData));
     }
     
     React.useEffect(() => {
-        register({ name: 'DebitOrderStartMonth', value: new Date().getMonth() });
-        register({ name: 'LumpSumInvestmentMonth', value: null });
+        register({ name: 'DebitOrderStartMonth', value: new Date().getMonth()+1 });
+        register({ name: 'LumpSumInvestmentMonth', value: new Date().getMonth()+1 });
         register({ name: 'DebitOrderAmount', value: 2500 });
         register({ name: 'LumpSumInvestmentAmount', value: 0 });
     }, [register]);
@@ -97,7 +100,8 @@ const Form = () => {
                                 disableToolbar
                                 fullWidth={true}
                                 variant="inline"
-                                format="DD/MM/YYYY"
+                                views={["month"]}
+                                format="MM"
                                 disablePast={true}
                                 margin="normal"
                                 label="First debit month"
@@ -114,6 +118,7 @@ const Form = () => {
                     {fieldVisibility === 'yes' && (
                         <Box display="flex" flexWrap="wrap" m={1}>
                             <Box width="50%" px={2}>
+                                { /* TODO : separator and decimal formatting, input masks, and other input constraints (e.g: max length) */ }
                                 <TextField 
                                     name="LumpSumInvestmentAmount"
                                     className={classes.inputBase}
@@ -142,7 +147,8 @@ const Form = () => {
                                     disableToolbar
                                     fullWidth={true}
                                     variant="inline"
-                                    format="DD/MM/YYYY"
+                                    views={["month"]}
+                                    format="MM"
                                     disablePast={true}
                                     margin="normal"
                                     label="Lump Sum Investment Month"
@@ -165,6 +171,7 @@ const Form = () => {
                     </Box>
                 </MuiPickersUtilsProvider>
             </form>
+            {applicationResults && <Results { ...applicationResults } />}
         </Fragment>
     );
 }
