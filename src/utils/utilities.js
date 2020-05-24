@@ -1,7 +1,20 @@
-export function applicationCheck(applicationParameters) {
+function formatNumberDecimal(input) {
+    return Number.parseFloat(input).toFixed(2);
+}
 
-    let { LumpSumInvestmentMonth, LumpSumInvestmentAmount, DebitOrderStartMonth, DebitOrderAmount } = applicationParameters;
-    console.log(LumpSumInvestmentMonth, LumpSumInvestmentAmount, DebitOrderStartMonth, DebitOrderAmount);
+function formatNumbers(object) {
+
+    for(let [key, value] of Object.entries(object)) {
+        value = Number(value);
+        object = { ...object, [key]: value };
+    }
+    return object;
+
+}
+
+export default function applicationCheck(applicationParameters) {
+
+    let { LumpSumInvestmentMonth, LumpSumInvestmentAmount, DebitOrderStartMonth, DebitOrderAmount } = formatNumbers(applicationParameters);
 
     const LUMP_SUM_LIMIT = 30000;
 
@@ -71,16 +84,8 @@ export function applicationCheck(applicationParameters) {
         setEarliestStartMonth();
     }
 
-    console.log(DebitOrderAmount, DebitOrderStartMonth, LumpSumInvestmentMonth, LumpSumInvestmentAmount);
-
     EarliestPermissibleDebitOrderStartMonth = scopeState.StartMonth;
-    TotalContributions = scopeState.MaximumDebitAmount + LumpSumInvestmentAmount;
-
-    console.log({ 
-        EarliestPermissibleDebitOrderStartMonth, 
-        TotalContributions, 
-        ExcessContributions: scopeState.ExcessContributions
-    });
+    TotalContributions = formatNumberDecimal(scopeState.MaximumDebitAmount + LumpSumInvestmentAmount);
 
     return { EarliestPermissibleDebitOrderStartMonth, TotalContributions, ExcessContributions: scopeState.ExcessContributions };
 
