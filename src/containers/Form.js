@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 // Utils
 import { convertDateToNumber } from '../utils/utilities';
 // 3rd Party
-import { useForm } from "react-hook-form"; // form validation
+import { useForm } from "react-hook-form"; // form validation & submission
 // Theme
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
@@ -41,11 +41,10 @@ const useStyles = makeStyles(theme => ({
 
 const Form = () => {
 
-    const { register, handleSubmit, setValue, errors } = useForm();
+    const { register, handleSubmit, setValue } = useForm();
 
     const   [fieldVisibility, setFieldVisibility] = useState('no'),
-            [selectedDate, setSelectedDate] = useState({}),
-            [isError, setError] = useState(false);
+            [selectedDate, setSelectedDate] = useState({});
 
     const handleFieldVisibility = (event) => {
         setFieldVisibility(event.target.value);
@@ -70,8 +69,8 @@ const Form = () => {
     React.useEffect(() => {
         register({ name: 'DebitOrderStartMonth', value: new Date().getMonth() });
         register({ name: 'LumpSumInvestmentMonth', value: null });
-        register({ name: 'LumpSumInvestmentAmount', value: 0 });
         register({ name: 'DebitOrderAmount', value: 2500 });
+        register({ name: 'LumpSumInvestmentAmount', value: 0 });
     }, [register]);
 
     const classes = useStyles();
@@ -118,15 +117,14 @@ const Form = () => {
                                 <TextField 
                                     name="LumpSumInvestmentAmount"
                                     className={classes.inputBase}
-                                    error={isError}
                                     required 
                                     fullWidth={true}
                                     margin="normal"
                                     label="Lump Sum Amount" 
                                     aria-label="Lump Sum Amount" 
                                     variant="outlined" 
-                                    type="number" 
                                     helperText="Enter an amount no greater than R30,000"
+                                    type="number"
                                     InputProps={{ // component props
                                         startAdornment: <InputAdornment position="start">R</InputAdornment>,
                                     }}
@@ -140,7 +138,6 @@ const Form = () => {
                                 <KeyboardDatePicker
                                     name="LumpSumInvestmentMonth"
                                     className={classes.inputBase}
-                                    error={isError}
                                     required 
                                     disableToolbar
                                     fullWidth={true}
