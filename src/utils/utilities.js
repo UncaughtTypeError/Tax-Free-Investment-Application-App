@@ -19,7 +19,8 @@ export default function applicationCheck(applicationParameters) {
     const LUMP_SUM_LIMIT = 30000;
 
     let EarliestPermissibleDebitOrderStartMonth,
-        TotalContributions;
+        TotalContributions,
+        ExcessContributions;
 
     const scopeState = {
         MonthsRemaining: 0,
@@ -86,7 +87,8 @@ export default function applicationCheck(applicationParameters) {
 
     EarliestPermissibleDebitOrderStartMonth = scopeState.StartMonth;
     TotalContributions = formatNumberDecimal(scopeState.MaximumDebitAmount + LumpSumInvestmentAmount);
+    ExcessContributions = formatNumberDecimal(scopeState.ExcessContributions);
 
-    return { EarliestPermissibleDebitOrderStartMonth, TotalContributions, ExcessContributions: scopeState.ExcessContributions };
+    return { EarliestPermissibleDebitOrderStartMonth, TotalContributions, ExcessContributions };
 
 }
