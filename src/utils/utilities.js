@@ -14,7 +14,7 @@ function formatNumbers(object) {
 
 export default function applicationCheck(applicationParameters) {
 
-    let { LumpSumInvestmentMonth, LumpSumInvestmentAmount, DebitOrderStartMonth, DebitOrderAmount } = formatNumbers(applicationParameters);
+    let { LumpSumInvestmentMonth = 0, LumpSumInvestmentAmount = 0, DebitOrderStartMonth = 0, DebitOrderAmount = 0 } = formatNumbers(applicationParameters);
 
     const LUMP_SUM_LIMIT = 30000;
 
@@ -64,11 +64,21 @@ export default function applicationCheck(applicationParameters) {
         MaximumDebitAmount = MaximumDebitMonths * DebitOrderAmount;
 
         if(MaximumDebitMonths > 0) {
-            scopeState.StartMonth = (MonthsRemaining - MaximumDebitMonths) + (StartMonth + 1);
+            let CalculateMonth = (MonthsRemaining - MaximumDebitMonths) + (StartMonth + 1);
+            switch(CalculateMonth) {
+                case 13: // Jan
+                    scopeState.StartMonth = 1;
+                    break;
+                case 14: // Feb
+                    scopeState.StartMonth = 2;
+                    break;
+                default:
+                    scopeState.StartMonth = CalculateMonth;
+            }
         } else {
             scopeState.StartMonth = 3; // roll over to beginning of next tax year
         }
-        
+
         scopeState.ExcessContributions = MAX_TOTAL - LUMP_SUM_LIMIT;
 
     }
