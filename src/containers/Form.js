@@ -49,6 +49,8 @@ const Form = () => {
             [selectedDate, setSelectedDate] = useState({}),
             [applicationResults, setApplicationResults] = useState();
 
+    const DEBIT_AMOUNT = '2,500';
+
     const handleFieldVisibility = (event) => {
         setFieldVisibility(event.target.value);
     };
@@ -81,6 +83,7 @@ const Form = () => {
     return (
         <Fragment>
             <form autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
+                { /* TODO : allow variable debit amount input */ }
                 <MuiPickersUtilsProvider utils={MomentUtils}>
                     <Box display="flex" flexWrap="wrap" m={1}>
                         <Box width="50%" px={2}>
@@ -105,7 +108,7 @@ const Form = () => {
                                 disablePast={true}
                                 margin="normal"
                                 label="First debit month"
-                                helperText="The first month your debit order will be taken"
+                                helperText={`The first month your debit order will be taken (${DEBIT_AMOUNT} pm)`}
                                 inputVariant="outlined"
                                 KeyboardButtonProps={{
                                     'aria-label': 'Change first debit month',
