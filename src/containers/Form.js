@@ -100,7 +100,6 @@ const Form = () => {
                             <KeyboardDatePicker 
                                 name="DebitOrderStartMonth"
                                 className={classes.inputBase}
-                                disableToolbar
                                 fullWidth={true}
                                 variant="inline"
                                 format="MM/YYYY"
@@ -150,7 +149,6 @@ const Form = () => {
                                     name="LumpSumInvestmentMonth"
                                     className={classes.inputBase}
                                     required 
-                                    disableToolbar
                                     fullWidth={true}
                                     variant="inline"
                                     format="MM/YYYY"
