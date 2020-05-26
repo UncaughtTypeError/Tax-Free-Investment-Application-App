@@ -103,9 +103,12 @@ const Form = () => {
                                 disableToolbar
                                 fullWidth={true}
                                 variant="inline"
-                                views={["month"]}
-                                format="MM"
+                                format="MM/YYYY"
+                                views={["year","month"]}
+                                openTo="month"
+                                disableToolbar={false}
                                 disablePast={true}
+                                autoOk={true}
                                 margin="normal"
                                 label="First debit month"
                                 helperText={`The first month your debit order will be taken (${DEBIT_AMOUNT} pm)`}
@@ -150,9 +153,12 @@ const Form = () => {
                                     disableToolbar
                                     fullWidth={true}
                                     variant="inline"
-                                    views={["month"]}
-                                    format="MM"
+                                    format="MM/YYYY"
+                                    views={["year","month"]}
+                                    openTo="month"
+                                    disableToolbar={false}
                                     disablePast={true}
+                                    autoOk={true}
                                     margin="normal"
                                     label="Lump Sum Investment Month"
                                     helperText="The month your lump sum will be invested"
