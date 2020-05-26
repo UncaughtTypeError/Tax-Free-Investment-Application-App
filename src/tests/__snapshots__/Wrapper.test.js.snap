@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render component with grid layout structure 1`] = `ShallowWrapper {}`;
