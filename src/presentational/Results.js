@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
 const Results = (props) => {
 
     const { EarliestPermissibleDebitOrderStartMonth, TotalContributions, ExcessContributions } = props;
-    console.log(EarliestPermissibleDebitOrderStartMonth, TotalContributions, ExcessContributions, props);
+    //console.log(EarliestPermissibleDebitOrderStartMonth, TotalContributions, ExcessContributions, props);
 
     const classes = useStyles();
 
