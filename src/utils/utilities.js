@@ -15,6 +15,7 @@ function formatNumbers(object) {
 export default function applicationCheck(applicationParameters) {
 
     let { LumpSumInvestmentMonth = 0, LumpSumInvestmentAmount = 0, DebitOrderStartMonth = 0, DebitOrderAmount = 0 } = formatNumbers(applicationParameters);
+    console.log(LumpSumInvestmentMonth,LumpSumInvestmentAmount,DebitOrderStartMonth,DebitOrderAmount);
 
     const LUMP_SUM_LIMIT = 30000;
 
@@ -30,8 +31,21 @@ export default function applicationCheck(applicationParameters) {
         ExcessContributions: 0,
     }
 
+    const calculateStartMonth = (CalculateMonth) => {
+        switch(CalculateMonth) {
+            case 13: // Jan
+                return 1;
+            case 14: // Feb
+                return 2;
+            default:
+                return CalculateMonth;
+        }
+
+    }
+
     const setStartMonth = () => {
-        scopeState.StartMonth = (LumpSumInvestmentAmount > 0) ? (LumpSumInvestmentMonth + 1) : DebitOrderStartMonth;
+        let CalculateMonth = (LumpSumInvestmentAmount > 0 && LumpSumInvestmentMonth >= DebitOrderStartMonth) ? (LumpSumInvestmentMonth + 1) : DebitOrderStartMonth;
+        scopeState.StartMonth = calculateStartMonth(CalculateMonth);
     }
 
     const setMonthsRemaining = () => {
@@ -58,23 +72,13 @@ export default function applicationCheck(applicationParameters) {
 
     const setEarliestStartMonth = () => {
 
-        let { MaximumDebitMonths, MaximumDebitAmount, StartMonth, MonthsRemaining } = scopeState;
+        let { MaximumDebitMonths, StartMonth, MonthsRemaining } = scopeState;
 
         MaximumDebitMonths = Math.floor((LUMP_SUM_LIMIT - LumpSumInvestmentAmount) / DebitOrderAmount);
-        MaximumDebitAmount = MaximumDebitMonths * DebitOrderAmount;
 
         if(MaximumDebitMonths > 0) {
             let CalculateMonth = (MonthsRemaining - MaximumDebitMonths) + (StartMonth + 1);
-            switch(CalculateMonth) {
-                case 13: // Jan
-                    scopeState.StartMonth = 1;
-                    break;
-                case 14: // Feb
-                    scopeState.StartMonth = 2;
-                    break;
-                default:
-                    scopeState.StartMonth = CalculateMonth;
-            }
+            scopeState.StartMonth = calculateStartMonth(CalculateMonth);
         } else {
             scopeState.StartMonth = 3; // roll over to beginning of next tax year
         }
