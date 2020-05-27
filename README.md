@@ -18,4 +18,4 @@
 - Material-UI
 
 ### Deployment
-- [GitHub Pages](https://uncaughttypeerror.github.io/Tax-Free-Investment-Application-App/)
+- [GitHub Pages](https://uncaughttypeerror.github.io/Tax-Free-Investment-Application-App/) (only accessible when repo is public)
