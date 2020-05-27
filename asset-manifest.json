@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/static/js/main.9af1d2bf.chunk.js",
-    "main.js.map": "/static/js/main.9af1d2bf.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.910c9853.js",
-    "runtime-main.js.map": "/static/js/runtime-main.910c9853.js.map",
-    "static/js/2.9c6406dc.chunk.js": "/static/js/2.9c6406dc.chunk.js",
-    "static/js/2.9c6406dc.chunk.js.map": "/static/js/2.9c6406dc.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.20cdaa626ad3555c5a152bd867651bb8.js": "/precache-manifest.20cdaa626ad3555c5a152bd867651bb8.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/main.5ecd60fb.chunk.css.map": "/static/css/main.5ecd60fb.chunk.css.map",
-    "static/js/2.9c6406dc.chunk.js.LICENSE.txt": "/static/js/2.9c6406dc.chunk.js.LICENSE.txt"
+    "main.css": "/Tax-Free-Investment-Application-App/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/Tax-Free-Investment-Application-App/static/js/main.2e79a967.chunk.js",
+    "main.js.map": "/Tax-Free-Investment-Application-App/static/js/main.2e79a967.chunk.js.map",
+    "runtime-main.js": "/Tax-Free-Investment-Application-App/static/js/runtime-main.7454126e.js",
+    "runtime-main.js.map": "/Tax-Free-Investment-Application-App/static/js/runtime-main.7454126e.js.map",
+    "static/js/2.9c6406dc.chunk.js": "/Tax-Free-Investment-Application-App/static/js/2.9c6406dc.chunk.js",
+    "static/js/2.9c6406dc.chunk.js.map": "/Tax-Free-Investment-Application-App/static/js/2.9c6406dc.chunk.js.map",
+    "index.html": "/Tax-Free-Investment-Application-App/index.html",
+    "precache-manifest.5ea825ea9d0cbc301f0f98884a3e3a40.js": "/Tax-Free-Investment-Application-App/precache-manifest.5ea825ea9d0cbc301f0f98884a3e3a40.js",
+    "service-worker.js": "/Tax-Free-Investment-Application-App/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/Tax-Free-Investment-Application-App/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.9c6406dc.chunk.js.LICENSE.txt": "/Tax-Free-Investment-Application-App/static/js/2.9c6406dc.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.910c9853.js",
+    "static/js/runtime-main.7454126e.js",
     "static/js/2.9c6406dc.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.9af1d2bf.chunk.js"
+    "static/js/main.2e79a967.chunk.js"
   ]
 }
