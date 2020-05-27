@@ -14,6 +14,7 @@
 - Github Actions (test, build, deploy)
 
 ### UI Framework
+- React
 - Material-UI
 
 ### Deployment
